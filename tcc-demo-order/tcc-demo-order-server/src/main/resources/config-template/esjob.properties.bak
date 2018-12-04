@@ -1,0 +1,23 @@
+#小程序注册中心配置
+melot.elasticJob.regCenter.serverList=zk1.kktv2.com:2181
+#job namespace
+melot.elasticJob.regCenter.namespace=elastic-job-melot
+
+#onetime job配置实例
+melot.elasticJob.oneTimeJob[0].jobName=onetimeJob
+#spring bean name if use inject bean, or use class.forname create when jobClass
+melot.elasticJob.oneTimeJob[0].refJobName=myOneTimeJob
+#melot.elasticJob.oneTimeJob[0].jobClass=com.melot.job.example.MyOneTimeJob
+melot.elasticJob.oneTimeJob[0].email=xxx@melot.cn
+melot.elasticJob.oneTimeJob[0].host=10.0.*.*
+melot.elasticJob.oneTimeJob[0].description=job-description
+
+#simple job demo
+melot.elasticJob.simpleJob[0].cron=0/5 * * * * ?
+melot.elasticJob.simpleJob[0].jobName=simpleJob
+melot.elasticJob.simpleJob[0].jobClass=com.melot.job.example.MySimpleJob
+melot.elasticJob.simpleJob[0].email=xxx@melot.cn
+melot.elasticJob.simpleJob[0].host=10.0.*.*
+melot.elasticJob.simpleJob[0].description=job-description
+#multi tenants
+#melot.elasticJob.simpleJob[0].tenantIds=0,1

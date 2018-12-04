@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.miracle.module.tcc.demo.order.server.dao.OrderDao">
+    
+    <resultMap id="orderResultMap" type="Order">
+        <result column="order_id" property="orderId" jdbcType="BIGINT"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+        <result column="product_id" property="productId" jdbcType="INTEGER"/>
+        <result column="total_amount" property="totalAmount" jdbcType="INTEGER"/>
+        <result column="count" property="count" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+	
+	<insert id="createOrder" parameterType="Order"> 
+        insert into public.demo_order(order_id, status, product_id, total_amount, count, create_time) 
+        values(#{orderId},#{status},#{productId},#{totalAmount},#{count},#{createTime})  
+    </insert>
+    
+    <select id="getOrderById" parameterType="int" resultMap="orderResultMap">
+    	select * from public.demo_order where order_id = #{orderId}
+    </select>
+    
+    <update id="updateOrderStatus" parameterType="java.util.Map">
+    	update public.demo_order set status = #{status}
+    	where order_id = #{orderId}
+    </update>
+</mapper>

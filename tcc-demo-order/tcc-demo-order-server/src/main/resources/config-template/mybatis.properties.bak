@@ -1,0 +1,44 @@
+#DB数据源及mybatis配置实例
+#beanName is your spring bean name
+melot.datasource[0].beanName=masterDs
+melot.datasource[0].driverClassName=oracle.jdbc.driver.OracleDriver
+melot.datasource[0].url=jdbc:oracle:thin:@oramst.kktv2.com:1521:tshow
+melot.datasource[0].username=tshowtest
+melot.datasource[0].password=tshowpwd
+melot.datasource[0].validationQuery=select 1 from dual
+melot.datasource[0].poolPreparedStatements=false
+melot.datasource[0].initialSize=8
+melot.datasource[0].maxActive=20
+melot.datasource[0].maxIdle=20
+melot.datasource[0].maxWait=5000
+melot.datasource[0].minIdle=8
+melot.datasource[0].numTestsPerEvictionRun=10
+melot.datasource[0].testWhileIdle=true
+melot.datasource[0].testOnBorrow=true
+melot.datasource[0].defaultAutoCommit=true
+melot.datasource[0].timeBetweenLogStatsMillis=180000
+melot.datasource[0].filters=stat,log4j
+
+melot.datasource[1].beanName=pgDs
+melot.datasource[1].driverClassName=oracle.jdbc.driver.OracleDriver
+melot.datasource[1].url=jdbc:oracle:thin:@oramst.kktv2.com:1521:tshow
+melot.datasource[1].username=tshowtest
+melot.datasource[1].password=tshowpwd
+melot.datasource[1].validationQuery=select 1 from dual
+melot.datasource[1].poolPreparedStatements=false
+melot.datasource[1].initialSize=8
+melot.datasource[1].maxActive=20
+melot.datasource[1].maxIdle=20
+melot.datasource[1].maxWait=5000
+melot.datasource[1].minIdle=8
+melot.datasource[1].numTestsPerEvictionRun=10
+melot.datasource[1].testWhileIdle=true
+melot.datasource[1].testOnBorrow=true
+melot.datasource[1].defaultAutoCommit=true
+melot.datasource[1].timeBetweenLogStatsMillis=180000
+melot.datasource[1].filters=stat,log4j
+
+#your mapper package
+melot.mybatis.mapper-locations=classpath:/sqlmap/*Mapper.xml
+#your domain package
+melot.mybatis.type-aliases-package=com.melot.robot.api

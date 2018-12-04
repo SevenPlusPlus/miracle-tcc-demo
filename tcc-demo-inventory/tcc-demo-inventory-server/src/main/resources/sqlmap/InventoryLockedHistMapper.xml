@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.miracle.module.tcc.demo.inventory.server.dao.InventoryLockedHistoryDao">
+    
+    <resultMap id="inventoryLockedHistoryResultMap" type="InventoryLockedHistory">
+        <result column="transaction_id" property="transactionId" jdbcType="BIGINT"/>
+        <result column="product_id" property="productId" jdbcType="INTEGER"/>
+        <result column="locked_num" property="lockedNum" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+	
+	<insert id="createInventoryLockedHistory" parameterType="InventoryLockedHistory"> 
+        insert into public.demo_locked_inventory_hist(transaction_id, product_id, locked_num, create_time) 
+        values(#{transactionId},#{productId},#{lockedNum},#{createTime})  
+    </insert>
+    
+    <select id="getInventoryLockedHistoryById" parameterType="long" resultMap="inventoryLockedHistoryResultMap">
+    	select * from public.demo_locked_inventory_hist where transaction_id = #{transactionId}
+    </select>
+    
+    <delete id="delInventoryLockedHistoryById" parameterType="long">
+    	delete from public.demo_locked_inventory_hist where transaction_id = #{transactionId}
+    </delete>
+   
+</mapper>

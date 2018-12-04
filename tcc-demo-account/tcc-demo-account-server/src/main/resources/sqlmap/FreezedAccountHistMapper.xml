@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.miracle.module.tcc.demo.account.server.dao.FreezedAccountHistoryDao">
+    
+    <resultMap id="freezedAccountHistoryResultMap" type="FreezedAccountHistory">
+        <result column="transaction_id" property="transactionId" jdbcType="BIGINT"/>
+        <result column="user_id" property="userId" jdbcType="INTEGER"/>
+        <result column="freezed" property="freezed" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+	
+	<insert id="createFreezedHistory" parameterType="FreezedAccountHistory"> 
+        insert into public.demo_freezed_account_hist(transaction_id, user_id, freezed, create_time) 
+        values(#{transactionId},#{userId},#{freezed},#{createTime})  
+    </insert>
+    
+    <select id="getAccountFreezedHistoryById" parameterType="long" resultMap="freezedAccountHistoryResultMap">
+    	select * from public.demo_freezed_account_hist where transaction_id = #{transactionId}
+    </select>
+    
+    <delete id="delFreezedHistoryById" parameterType="long">
+    	delete from public.demo_freezed_account_hist where transaction_id = #{transactionId}
+    </delete>
+   
+</mapper>
